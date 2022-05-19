@@ -11,7 +11,15 @@ steps:
     - pwd
 
   - name: build
-    image: plugins/docker
+    image: plugins/docker    
     settings:
       dockerfile: ./deploy/Dockerfile
       context: ./deploy/
+      tags:
+      - latest
+
+  - name: after
+    image: alpine
+    commands:
+    - docker ps -a
+    - docker images
