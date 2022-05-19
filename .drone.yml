@@ -11,15 +11,34 @@ steps:
     - pwd
 
   - name: build
-    image: docker
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run
     commands:
       - cd deploy
       - docker build -t jserver .
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
 
   - name: after
     image: alpine
     commands:
     - docker ps -a
     - docker images
+
+services:
+  - name: docker
+    image: docker:dind
+    privileged: true
+    volumes:
+      - name: dockersock
+        path: /var/run
+
+volumes:
+  - name: dockersock
+    temp: {}
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
