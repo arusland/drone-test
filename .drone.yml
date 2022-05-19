@@ -16,6 +16,7 @@ steps:
       - name: dockersock
         path: /var/run
     commands:
+      - sleep 10 # give docker enough time to initialize
       - cd deploy
       - docker build -t jserver .
 
