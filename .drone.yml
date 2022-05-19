@@ -8,8 +8,10 @@ steps:
     - echo hello
     - ls -lah
     - ls -lah deploy
+    - pwd
 
   - name: build
     image: plugins/docker
-    dockerfile: ./deploy/Dockerfile
-    context: ./deploy/
+    settings:
+      dockerfile: ./deploy/Dockerfile
+      context: ./deploy/
