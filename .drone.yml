@@ -19,12 +19,8 @@ steps:
       - sleep 10 # give docker enough time to initialize
       - cd deploy
       - docker build -t jserver .
-
-  - name: after
-    image: alpine
-    commands:
-    - docker ps -a
-    - docker images
+      - docker ps -a
+      - docker images
 
 services:
   - name: docker
