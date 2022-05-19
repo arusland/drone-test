@@ -1,0 +1,7 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: build
+    image: plugins/docker
+    dockerfile: deploy/Dockerfile
