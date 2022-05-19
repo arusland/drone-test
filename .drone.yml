@@ -9,6 +9,7 @@ steps:
     - ls -lah
     - ls -lah deploy
     - pwd
+    - docker images
 
   - name: build
     image: plugins/docker    
