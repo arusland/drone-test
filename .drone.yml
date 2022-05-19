@@ -2,6 +2,13 @@ kind: pipeline
 name: default
 
 steps:
+  - name: greeting
+    image: alpine
+    commands:
+    - echo hello
+    - ls -lah
+    - ls -lah deploy
+
   - name: build
     image: plugins/docker
     dockerfile: ./deploy/Dockerfile
