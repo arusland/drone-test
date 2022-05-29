@@ -18,9 +18,10 @@ steps:
     commands:
       - sleep 10 # give docker enough time to initialize
       - cd deploy
-      - docker build -t jserver .
+      - docker build -t bashhello .
       - docker ps -a
       - docker images
+      - docker save bashhello | bzip2 | ssh root@$DEPLOY_HOST docker load
 
 services:
   - name: docker
