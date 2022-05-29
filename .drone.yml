@@ -15,6 +15,9 @@ steps:
     volumes:
       - name: dockersock
         path: /var/run
+    environment:
+        DEPLOY_HOST:
+          from_secret: DEPLOY_HOST
     commands:
       - sleep 10 # give docker enough time to initialize
       - cd deploy
