@@ -24,6 +24,7 @@ steps:
       - docker build -t bashhello .
       - docker ps -a
       - docker images
+      - echo "DEPLOY_HOST: $DEPLOY_HOST"
       - docker save bashhello | bzip2 | ssh root@$DEPLOY_HOST docker load
 
 services:
